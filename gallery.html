@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Lumière Skin Clinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">✦</span><span>Lumière <em>Skin</em></span></a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-btn">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="ph-blobs"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+    <div class="ph-content">
+      <p class="hero-tag">✦ Transformations</p>
+      <h1>Our <em>Gallery</em></h1>
+      <p>Real results from real clients. Witness the power of expert skin care.</p>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-filters">
+        <button class="gf-btn active" data-filter="all">All</button>
+        <button class="gf-btn" data-filter="facial">Facial Treatments</button>
+        <button class="gf-btn" data-filter="laser">Laser</button>
+        <button class="gf-btn" data-filter="acne">Acne</button>
+        <button class="gf-btn" data-filter="antiaging">Anti-Aging</button>
+        <button class="gf-btn" data-filter="clinic">Clinic</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Facial -->
+        <div class="gallery-item" data-category="facial">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5e6d3, #e8c9b0);">
+            <div class="g-overlay"><span>HydraFacial Result</span></div>
+            <div class="g-placeholder">
+              <div class="gp-face f1"></div>
+              <div class="gp-shine"></div>
+            </div>
+            <div class="g-tag">Facial</div>
+          </div>
+        </div>
+        <div class="gallery-item tall" data-category="facial">
+          <div class="g-card" style="background: linear-gradient(135deg, #e8d5f0, #d4b8e8);">
+            <div class="g-overlay"><span>Skin Brightening</span></div>
+            <div class="g-placeholder">
+              <div class="gp-face f2"></div>
+              <div class="gp-sparkles">✦ ✦ ✦</div>
+            </div>
+            <div class="g-tag">Facial</div>
+          </div>
+        </div>
+        <!-- Laser -->
+        <div class="gallery-item" data-category="laser">
+          <div class="g-card" style="background: linear-gradient(135deg, #d3e8f5, #b0cfe8);">
+            <div class="g-overlay"><span>Laser Resurfacing</span></div>
+            <div class="g-placeholder">
+              <div class="gp-laser">
+                <div class="laser-beam"></div>
+                <div class="gp-face f3"></div>
+              </div>
+            </div>
+            <div class="g-tag">Laser</div>
+          </div>
+        </div>
+        <div class="gallery-item wide" data-category="clinic">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5f0e8, #ede3d0);">
+            <div class="g-overlay"><span>Our Clinic</span></div>
+            <div class="g-placeholder clinic-ph">
+              <div class="clinic-room">
+                <div class="cr-bed"></div>
+                <div class="cr-lamp"></div>
+                <div class="cr-table"></div>
+              </div>
+            </div>
+            <div class="g-tag">Clinic</div>
+          </div>
+        </div>
+        <!-- Acne -->
+        <div class="gallery-item" data-category="acne">
+          <div class="g-card" style="background: linear-gradient(135deg, #d3f5e8, #b0e8cc);">
+            <div class="g-overlay"><span>Acne Treatment Before/After</span></div>
+            <div class="g-placeholder">
+              <div class="before-after">
+                <div class="ba-side ba-before"><span>Before</span></div>
+                <div class="ba-divider"></div>
+                <div class="ba-side ba-after"><span>After</span></div>
+              </div>
+            </div>
+            <div class="g-tag">Acne</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="antiaging">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5d3e8, #e8b0cc);">
+            <div class="g-overlay"><span>Anti-Aging Results</span></div>
+            <div class="g-placeholder">
+              <div class="gp-face f4"></div>
+              <div class="age-arrows">↑ Firmer</div>
+            </div>
+            <div class="g-tag">Anti-Aging</div>
+          </div>
+        </div>
+        <div class="gallery-item tall" data-category="laser">
+          <div class="g-card" style="background: linear-gradient(135deg, #d3d8f5, #b0b8e8);">
+            <div class="g-overlay"><span>Pigmentation Removal</span></div>
+            <div class="g-placeholder">
+              <div class="gp-face f5"></div>
+              <div class="gp-shine s2"></div>
+            </div>
+            <div class="g-tag">Laser</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="clinic">
+          <div class="g-card" style="background: linear-gradient(135deg, #f0f5d3, #e3e8b0);">
+            <div class="g-overlay"><span>Treatment Room</span></div>
+            <div class="g-placeholder">
+              <div class="gp-icon" style="font-size:3rem">🏥</div>
+              <p style="color:#8a7a6a;font-family:'DM Sans',sans-serif;font-size:0.85rem">Sterile & Comfortable</p>
+            </div>
+            <div class="g-tag">Clinic</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="facial">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5e8d3, #e8cdb0);">
+            <div class="g-overlay"><span>Oxygen Facial Glow</span></div>
+            <div class="g-placeholder">
+              <div class="gp-face f1"></div>
+              <div class="oxygen-bubbles"><span>○</span><span>○</span><span>○</span></div>
+            </div>
+            <div class="g-tag">Facial</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="acne">
+          <div class="g-card" style="background: linear-gradient(135deg, #e8f5d3, #cce8b0);">
+            <div class="g-overlay"><span>Clear Skin Journey</span></div>
+            <div class="g-placeholder">
+              <div class="before-after">
+                <div class="ba-side ba-before"><span>Before</span></div>
+                <div class="ba-divider"></div>
+                <div class="ba-side ba-after clear"><span>After</span></div>
+              </div>
+            </div>
+            <div class="g-tag">Acne</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="antiaging">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5d3d3, #e8b0b0);">
+            <div class="g-overlay"><span>Botox Results</span></div>
+            <div class="g-placeholder">
+              <div class="gp-icon" style="font-size:2.5rem">💉</div>
+              <p style="color:#8a6a6a;font-family:'DM Sans',sans-serif;font-size:0.85rem">Natural Look</p>
+            </div>
+            <div class="g-tag">Anti-Aging</div>
+          </div>
+        </div>
+        <div class="gallery-item wide" data-category="clinic">
+          <div class="g-card" style="background: linear-gradient(135deg, #f5f5f0, #e8e8e0);">
+            <div class="g-overlay"><span>Reception & Lounge</span></div>
+            <div class="g-placeholder clinic-ph">
+              <div class="gp-icon" style="font-size:2.5rem">🌿</div>
+              <p style="color:#7a7a6a;font-family:'DM Sans',sans-serif;font-size:0.85rem">Calm & Luxurious Environment</p>
+            </div>
+            <div class="g-tag">Clinic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">✕</button>
+    <div class="lb-content" id="lbContent"></div>
+  </div>
+
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2>Your Transformation <em>Awaits</em></h2>
+      <p>Join thousands of happy clients who've discovered their best skin with us.</p>
+      <a href="contact.html" class="btn-white">Book Now</a>
+    </div>
+    <div class="cta-blobs"><div class="cta-blob cb1"></div><div class="cta-blob cb2"></div></div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo dark"><span class="logo-icon">✦</span><span>Lumière <em>Skin</em></span></a>
+        <p>Where science meets beauty. Your journey to radiant, healthy skin starts here.</p>
+        <div class="socials"><a href="#">Ig</a><a href="#">Fb</a><a href="#">Yt</a></div>
+      </div>
+      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">HydraFacial</a></li><li><a href="services.html">Laser Treatment</a></li><li><a href="services.html">Chemical Peels</a></li><li><a href="services.html">Anti-Aging</a></li><li><a href="services.html">PRP Therapy</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li>📍 123, Skin Street, Nashik</li><li>📞 +91 98765 43210</li><li>✉️ hello@lumiereskin.com</li><li>⏰ Mon–Sat: 9am – 7pm</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Lumière Skin Clinic. All Rights Reserved.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
