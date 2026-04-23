@@ -3,142 +3,443 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us – Lumière Skin Clinic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <title>About Us – Lumière Skin Clinic | Our Story & Expert Team</title>
+  <meta name="description" content="Learn about Lumière Skin Clinic's journey, our board-certified dermatologists, and our commitment to advanced, personalized skin care in Nashik."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#faf7f2', blush: '#f5ede6', rose: '#d4a09a',
+            gold: '#b8935a', 'gold-light': '#e8d5b7', sage: '#8fa88a',
+            charcoal: '#2c2420', brown: '#5c3d2e', muted: '#8a7a70',
+          },
+          fontFamily: { heading: ['"Playfair Display"', 'serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #faf7f2; color: #2c2420; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    .navbar-scrolled { box-shadow: 0 4px 30px rgba(80,40,20,0.1); }
+    .nav-link { position: relative; padding: 6px 0 !important; margin: 0 16px; background: transparent !important; border-radius: 0 !important; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #b8935a; transition: width 0.3s; border-radius: 2px; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link:hover { color: #5c3d2e !important; background: transparent !important; }
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(80,40,20,0.14); }
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #b8935a; background: #e8d5b7; padding: 6px 18px; border-radius: 100px; margin-bottom: 14px; }
+    .btn-primary { display: inline-block; background: #5c3d2e; color: #faf7f2; padding: 14px 32px; border-radius: 100px; font-size: 0.92rem; font-weight: 500; font-family: 'Inter', sans-serif; letter-spacing: 0.03em; transition: all 0.25s; }
+    .btn-primary:hover { background: #b8935a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,61,46,0.3); }
+    .btn-outline { display: inline-block; border: 2px solid #5c3d2e; color: #5c3d2e; padding: 12px 30px; border-radius: 100px; font-size: 0.92rem; font-weight: 500; transition: all 0.25s; }
+    .btn-outline:hover { background: #5c3d2e; color: #faf7f2; transform: translateY(-2px); }
+    .hamburger-bar { display: block; width: 24px; height: 2px; background: #5c3d2e; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active .hamburger-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .hamburger-bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .hamburger-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    @media (max-width: 768px) { .mobile-menu { display: none; } .mobile-menu.open { display: flex; } }
+    .cta-section { background: linear-gradient(135deg, #fdf6f0 0%, #f5ede6 50%, #ede0d6 100%); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -60px; left: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(184,147,90,0.15), transparent); border-radius: 50%; }
+    .cta-section::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(212,160,154,0.15), transparent); border-radius: 50%; }
+    .story-img { overflow: hidden; border-radius: 28px; }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .story-img:hover img { transform: scale(1.04); }
+    .whatsapp-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .team-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #e8d5b7; margin: 0 auto 16px; display: block; }
+    .award-card { border-left: 3px solid #b8935a; }
+    .pillar-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #e8d5b7; line-height: 1; }
+  </style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-icon">✦</span><span>Lumière <em>Skin</em></span></a>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="contact.html" class="nav-btn">Book Now</a></li>
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-amber-100 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-700 to-amber-500 flex items-center justify-center">
+          <i class="fa-solid fa-spa text-white text-sm"></i>
+        </div>
+        <span class="font-heading text-2xl font-semibold text-brown">Lumière <em class="text-gold italic">Skin</em></span>
+      </a>
+      <ul class="hidden md:flex items-center">
+        <li><a href="index.html" class="nav-link text-sm font-medium text-muted transition-colors">Home</a></li>
+        <li><a href="about.html" class="nav-link active text-sm font-medium text-brown transition-colors">About</a></li>
+        <li><a href="services.html" class="nav-link text-sm font-medium text-muted transition-colors">Services</a></li>
+        <li><a href="gallery.html" class="nav-link text-sm font-medium text-muted transition-colors">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link text-sm font-medium text-muted transition-colors">Contact</a></li>
+        <li class="ml-6"><a href="contact.html" class="btn-primary text-sm">Book Now</a></li>
       </ul>
+      <button id="hamburger" class="md:hidden hamburger flex flex-col gap-1.5 p-2">
+        <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu md:hidden flex-col bg-white border-t border-amber-100 px-6 py-4 gap-1 shadow-lg">
+      <a href="index.html" class="block px-4 py-3 text-muted rounded-xl hover:bg-blush transition-colors">Home</a>
+      <a href="about.html" class="block px-4 py-3 text-brown font-medium rounded-xl bg-blush">About</a>
+      <a href="services.html" class="block px-4 py-3 text-muted rounded-xl hover:bg-blush transition-colors">Services</a>
+      <a href="gallery.html" class="block px-4 py-3 text-muted rounded-xl hover:bg-blush transition-colors">Gallery</a>
+      <a href="contact.html" class="block px-4 py-3 text-muted rounded-xl hover:bg-blush transition-colors">Contact</a>
+      <a href="contact.html" class="btn-primary text-center mt-2">Book Consultation</a>
     </div>
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="ph-blobs"><div class="blob blob1"></div><div class="blob blob2"></div></div>
-    <div class="ph-content">
-      <p class="hero-tag">✦ Our Story</p>
-      <h1>About <em>Lumière</em></h1>
-      <p>A sanctuary of skin science, dedicated to revealing your most radiant self.</p>
+  <section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #faf7f2 0%, #f5ede6 100%);">
+    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="fade-in">
+        <span class="section-tag"><i class="fa-solid fa-circle-dot mr-1"></i> Our Story</span>
+        <h1 class="font-heading text-5xl lg:text-6xl font-bold text-charcoal leading-tight mt-3 mb-6">
+          About <em class="text-gold italic">Lumière</em><br/>Skin Clinic
+        </h1>
+        <p class="text-muted text-lg leading-relaxed mb-4">A sanctuary of skin science, dedicated to revealing your most radiant, healthy self. We believe every person deserves access to world-class dermatology — without compromise.</p>
+        <p class="text-muted leading-relaxed mb-8">Founded in 2012 by Dr. Meera Joshi, Lumière Skin Clinic has grown from a small dermatology practice into one of Maharashtra's most trusted skin care destinations — serving over 8,000 satisfied clients.</p>
+        <div class="flex gap-4 flex-wrap">
+          <a href="contact.html" class="btn-primary"><i class="fa-regular fa-calendar-check mr-2"></i>Book Consultation</a>
+          <a href="services.html" class="btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="fade-in relative" style="transition-delay:0.2s">
+        <div class="story-img h-[480px] shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Our skin clinic interior"/>
+        </div>
+        <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl px-6 py-4 shadow-xl">
+          <div class="font-heading text-3xl font-bold text-brown">Est. 2012</div>
+          <div class="text-xs text-muted mt-1">Trusted for 12+ Years</div>
+        </div>
+        <div class="absolute -top-5 -right-5 bg-brown rounded-2xl px-5 py-4 shadow-xl text-white text-center">
+          <div class="font-heading text-3xl font-bold text-gold">8K+</div>
+          <div class="text-xs text-white/70 mt-1">Happy Clients</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- STORY SECTION -->
-  <section class="about-story">
-    <div class="container">
-      <div class="story-grid">
-        <div class="story-visual">
-          <div class="story-img-card">
-            <div class="clinic-illustration">
-              <div class="cli-circle"></div>
-              <div class="cli-plus">+</div>
-              <div class="cli-dots"></div>
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <div class="relative story-img h-[500px] shadow-xl">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Clinic story"/>
+          </div>
+        </div>
+        <div class="fade-in" style="transition-delay:0.15s">
+          <span class="section-tag">Our Journey</span>
+          <h2 class="font-heading text-4xl font-bold text-charcoal mt-3 mb-6 leading-tight">
+            12 Years of <em class="text-gold italic">Transforming</em> Skin & Lives
+          </h2>
+          <p class="text-muted leading-relaxed mb-5">Founded in 2012 by Dr. Meera Joshi, Lumière Skin Clinic was born from a simple belief — that everyone deserves healthy, glowing skin regardless of their skin type, tone, or concern. What began as a small dermatology practice has evolved into a full-service skin center equipped with state-of-the-art technology.</p>
+          <p class="text-muted leading-relaxed mb-8">We blend the precision of modern dermatology with a deep respect for each patient's individuality. No two skin journeys are the same, and neither are our treatment plans. We listen first, treat second — because understanding your skin is the foundation of every beautiful result.</p>
+          <!-- Pillars -->
+          <div class="flex flex-col gap-6">
+            <div class="flex gap-5 items-start">
+              <div class="pillar-num flex-shrink-0">01</div>
+              <div>
+                <strong class="block text-brown font-semibold mb-1">Patient First, Always</strong>
+                <p class="text-sm text-muted">Your comfort, safety, and results are our only priority. We never rush — we listen, understand, and then act.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <div class="pillar-num flex-shrink-0">02</div>
+              <div>
+                <strong class="block text-brown font-semibold mb-1">Evidence-Based Medicine</strong>
+                <p class="text-sm text-muted">Every treatment is clinically proven, peer-reviewed, and science-backed. We do not experiment — we transform.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <div class="pillar-num flex-shrink-0">03</div>
+              <div>
+                <strong class="block text-brown font-semibold mb-1">Personalized Skin Care</strong>
+                <p class="text-sm text-muted">Custom plans crafted for your unique skin type, Fitzpatrick tone, lifestyle, diet, and long-term skin health goals.</p>
+              </div>
             </div>
           </div>
-          <div class="story-badge">Est. 2012</div>
         </div>
-        <div class="story-text">
-          <div class="section-tag">Our Journey</div>
-          <h2 class="section-title">12 Years of <em>Transforming</em> Skin</h2>
-          <p>Founded in 2012 by Dr. Meera Joshi, Lumière Skin Clinic was born from a simple belief — everyone deserves healthy, glowing skin. What started as a small dermatology practice has grown into one of the most trusted skin care destinations in the region.</p>
-          <p>We blend the precision of modern dermatology with a deep respect for each patient's individuality. No two skin journeys are the same, and neither are our treatment plans.</p>
-          <div class="about-pillars">
-            <div class="pillar"><span class="pillar-num">01</span><div><strong>Patient First</strong><p>Your comfort, safety, and results are our only priority.</p></div></div>
-            <div class="pillar"><span class="pillar-num">02</span><div><strong>Evidence Based</strong><p>Every treatment is clinically proven and science-backed.</p></div></div>
-            <div class="pillar"><span class="pillar-num">03</span><div><strong>Personalized Care</strong><p>Custom plans crafted for your unique skin type and goals.</p></div></div>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="py-16 bg-brown">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="fade-in">
+          <div class="font-heading text-5xl font-bold text-gold mb-2">12+</div>
+          <div class="text-white/70 text-sm font-medium uppercase tracking-widest">Years in Practice</div>
+        </div>
+        <div class="fade-in" style="transition-delay:0.1s">
+          <div class="font-heading text-5xl font-bold text-gold mb-2">8,000+</div>
+          <div class="text-white/70 text-sm font-medium uppercase tracking-widest">Clients Served</div>
+        </div>
+        <div class="fade-in" style="transition-delay:0.2s">
+          <div class="font-heading text-5xl font-bold text-gold mb-2">25+</div>
+          <div class="text-white/70 text-sm font-medium uppercase tracking-widest">Treatments Offered</div>
+        </div>
+        <div class="fade-in" style="transition-delay:0.3s">
+          <div class="font-heading text-5xl font-bold text-gold mb-2">98%</div>
+          <div class="text-white/70 text-sm font-medium uppercase tracking-widest">Satisfaction Rate</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TEAM SECTION -->
-  <section class="team-section">
-    <div class="container">
-      <div class="sec-header">
-        <div class="section-tag">Meet the Experts</div>
-        <h2 class="section-title">Our <em>Specialist</em> Team</h2>
+  <section class="py-24 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="section-tag">Meet the Experts</span>
+        <h2 class="font-heading text-4xl lg:text-5xl font-bold text-charcoal mt-3 mb-4">Our <em class="text-gold italic">Specialist</em> Team</h2>
+        <p class="text-muted max-w-xl mx-auto">Board-certified dermatologists and trained aestheticians committed to delivering world-class skin care results.</p>
       </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar">
-            <div class="avatar-circle av1">Dr. M</div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="fade-in bg-white rounded-2xl p-8 text-center border border-amber-100 card-hover">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80" alt="Dr. Meera Joshi" class="team-img"/>
+          <h3 class="font-heading text-xl font-semibold text-brown mb-1">Dr. Meera Joshi</h3>
+          <span class="text-xs font-semibold text-gold uppercase tracking-widest block mb-3">Founder & Chief Dermatologist</span>
+          <p class="text-sm text-muted leading-relaxed mb-4">MBBS, MD Dermatology — 15+ years of expertise in advanced cosmetic and medical dermatology treatments. Trained at AIIMS Delhi.</p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Laser Specialist</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Anti-Aging</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Aesthetic Medicine</span>
           </div>
-          <h3>Dr. Meera Joshi</h3>
-          <span class="team-role">Founder & Chief Dermatologist</span>
-          <p>MBBS, MD Dermatology – 15+ years of expertise in advanced cosmetic treatments.</p>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">
-            <div class="avatar-circle av2">Dr. A</div>
+        <div class="fade-in bg-white rounded-2xl p-8 text-center border border-amber-100 card-hover" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Arjun Kulkarni" class="team-img"/>
+          <h3 class="font-heading text-xl font-semibold text-brown mb-1">Dr. Arjun Kulkarni</h3>
+          <span class="text-xs font-semibold text-gold uppercase tracking-widest block mb-3">Laser & Aesthetic Specialist</span>
+          <p class="text-sm text-muted leading-relaxed mb-4">Pioneer in laser skin resurfacing and non-invasive cosmetic procedures with over 10 years of clinical experience in advanced skin technology.</p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Q-Switch Laser</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Botox & Fillers</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">PRP Therapy</span>
           </div>
-          <h3>Dr. Arjun Kulkarni</h3>
-          <span class="team-role">Laser & Aesthetic Specialist</span>
-          <p>Pioneer in laser skin resurfacing and non-invasive cosmetic procedures.</p>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">
-            <div class="avatar-circle av3">Dr. S</div>
+        <div class="fade-in bg-white rounded-2xl p-8 text-center border border-amber-100 card-hover" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Sneha Patel" class="team-img"/>
+          <h3 class="font-heading text-xl font-semibold text-brown mb-1">Dr. Sneha Patel</h3>
+          <span class="text-xs font-semibold text-gold uppercase tracking-widest block mb-3">Trichologist & Skin Expert</span>
+          <p class="text-sm text-muted leading-relaxed mb-4">Specialist in hair and scalp treatments with a deeply holistic approach to skin health, nutrition, and long-term skin wellness management.</p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Hair Loss PRP</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">HydraFacial</span>
+            <span class="text-xs bg-amber-50 text-brown px-3 py-1 rounded-full border border-amber-100">Acne Solutions</span>
           </div>
-          <h3>Dr. Sneha Patel</h3>
-          <span class="team-role">Trichologist & Skin Expert</span>
-          <p>Specialist in hair & scalp treatments with a holistic approach to skin health.</p>
+        </div>
+      </div>
+      <!-- Additional Staff -->
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="fade-in bg-white rounded-2xl p-6 border border-amber-100 card-hover flex items-center gap-5">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-rose-200 to-amber-200 flex items-center justify-center font-heading text-xl font-bold text-brown flex-shrink-0">R</div>
+          <div>
+            <h4 class="font-heading text-lg font-semibold text-brown mb-0.5">Ritu Sharma</h4>
+            <span class="text-xs font-semibold text-gold uppercase tracking-widest block mb-2">Senior Aesthetic Therapist</span>
+            <p class="text-xs text-muted">7 years of experience in HydraFacial, chemical peels, and microneedling procedures.</p>
+          </div>
+        </div>
+        <div class="fade-in bg-white rounded-2xl p-6 border border-amber-100 card-hover flex items-center gap-5" style="transition-delay:0.1s">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center font-heading text-xl font-bold text-indigo-700 flex-shrink-0">V</div>
+          <div>
+            <h4 class="font-heading text-lg font-semibold text-brown mb-0.5">Vinay Kapoor</h4>
+            <span class="text-xs font-semibold text-gold uppercase tracking-widest block mb-2">Laser Technician & Trainer</span>
+            <p class="text-xs text-muted">Certified in fractional CO2 laser, IPL, and Q-switch technologies across 200+ monthly procedures.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- VALUES -->
-  <section class="values-section">
-    <div class="container">
-      <div class="sec-header">
-        <div class="section-tag">What We Believe</div>
-        <h2 class="section-title">Our Core <em>Values</em></h2>
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="section-tag">What We Believe</span>
+        <h2 class="font-heading text-4xl font-bold text-charcoal mt-3 mb-4">Our Core <em class="text-gold italic">Values</em></h2>
+        <p class="text-muted max-w-lg mx-auto">These principles guide every consultation, every treatment, and every client relationship we build.</p>
       </div>
-      <div class="values-grid">
-        <div class="val-card"><div class="val-icon">💫</div><h4>Excellence</h4><p>We uphold the highest standards in dermatological care and patient experience.</p></div>
-        <div class="val-card"><div class="val-icon">🔒</div><h4>Safety</h4><p>FDA-approved treatments only. Patient safety is never compromised.</p></div>
-        <div class="val-card"><div class="val-icon">🌱</div><h4>Sustainability</h4><p>Eco-conscious practices and cruelty-free products across all our treatments.</p></div>
-        <div class="val-card"><div class="val-icon">🤝</div><h4>Integrity</h4><p>Honest recommendations — we suggest only what truly benefits your skin.</p></div>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="fade-in bg-cream rounded-2xl p-7 text-center border border-amber-100 card-hover">
+          <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-trophy text-gold text-xl"></i>
+          </div>
+          <h4 class="font-heading text-lg font-semibold text-brown mb-3">Excellence</h4>
+          <p class="text-sm text-muted leading-relaxed">We uphold the highest standards in dermatological care, continuous education, and patient experience — always.</p>
+        </div>
+        <div class="fade-in bg-cream rounded-2xl p-7 text-center border border-amber-100 card-hover" style="transition-delay:0.1s">
+          <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-shield-halved text-green-600 text-xl"></i>
+          </div>
+          <h4 class="font-heading text-lg font-semibold text-brown mb-3">Safety First</h4>
+          <p class="text-sm text-muted leading-relaxed">FDA-approved treatments only. Patient safety is never negotiated — patch tests, thorough consultations, no shortcuts.</p>
+        </div>
+        <div class="fade-in bg-cream rounded-2xl p-7 text-center border border-amber-100 card-hover" style="transition-delay:0.2s">
+          <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-leaf text-emerald-600 text-xl"></i>
+          </div>
+          <h4 class="font-heading text-lg font-semibold text-brown mb-3">Sustainability</h4>
+          <p class="text-sm text-muted leading-relaxed">Eco-conscious practices and cruelty-free, ethically sourced products across all our skin care treatments and services.</p>
+        </div>
+        <div class="fade-in bg-cream rounded-2xl p-7 text-center border border-amber-100 card-hover" style="transition-delay:0.3s">
+          <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-handshake text-blue-500 text-xl"></i>
+          </div>
+          <h4 class="font-heading text-lg font-semibold text-brown mb-3">Integrity</h4>
+          <p class="text-sm text-muted leading-relaxed">Honest recommendations — we suggest only what truly benefits your skin, with full transparency in pricing and results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS & CERTIFICATIONS -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-tag">Recognition</span>
+        <h2 class="font-heading text-4xl font-bold text-charcoal mt-3 mb-4">Awards & <em class="text-gold italic">Certifications</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-in bg-white rounded-2xl p-6 border border-amber-100 card-hover award-card">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-award text-gold text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-heading text-lg font-semibold text-brown mb-1">Best Skin Clinic – Nashik 2023</h4>
+              <p class="text-xs text-muted">Awarded by Maharashtra Dermatology Association for excellence in patient care and treatment outcomes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in bg-white rounded-2xl p-6 border border-amber-100 card-hover award-card" style="transition-delay:0.1s">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-certificate text-blue-500 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-heading text-lg font-semibold text-brown mb-1">ISO 9001:2015 Certified</h4>
+              <p class="text-xs text-muted">Certified for quality management systems ensuring consistent, safe, and high-standard clinical procedures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in bg-white rounded-2xl p-6 border border-amber-100 card-hover award-card" style="transition-delay:0.2s">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-star-of-life text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-heading text-lg font-semibold text-brown mb-1">FDA-Approved Equipment</h4>
+              <p class="text-xs text-muted">All laser and treatment devices are FDA-approved with regular calibration and safety audits conducted quarterly.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-banner">
-    <div class="cta-content">
-      <h2>Let Us Care for <em>Your Skin</em></h2>
-      <p>Schedule a consultation and discover your personalized skin journey with our expert team.</p>
-      <a href="contact.html" class="btn-white">Get in Touch</a>
+  <section class="cta-section py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <span class="section-tag">Start Today</span>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-charcoal mt-4 mb-5 leading-tight">
+        Let Us Care for <em class="text-gold italic">Your Skin</em>
+      </h2>
+      <p class="text-muted text-lg mb-8 max-w-2xl mx-auto leading-relaxed">Schedule a free skin consultation and discover your personalized treatment journey with our expert dermatology team. Your radiant skin is waiting.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="contact.html" class="btn-primary text-base px-8 py-4">
+          <i class="fa-regular fa-calendar-check mr-2"></i>Book Free Consultation
+        </a>
+        <a href="tel:+919876543210" class="btn-outline text-base px-8 py-4">
+          <i class="fa-solid fa-phone mr-2"></i>Call Now
+        </a>
+      </div>
     </div>
-    <div class="cta-blobs"><div class="cta-blob cb1"></div><div class="cta-blob cb2"></div></div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo dark"><span class="logo-icon">✦</span><span>Lumière <em>Skin</em></span></a>
-        <p>Where science meets beauty. Your journey to radiant, healthy skin starts here.</p>
-        <div class="socials"><a href="#">Ig</a><a href="#">Fb</a><a href="#">Yt</a></div>
+  <!-- FOOTER -->
+  <footer class="bg-charcoal py-16 text-white/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center">
+              <i class="fa-solid fa-spa text-white text-sm"></i>
+            </div>
+            <span class="font-heading text-xl font-semibold text-white">Lumière <em class="text-gold italic">Skin</em></span>
+          </div>
+          <p class="text-sm leading-relaxed mb-6">Where science meets beauty. Your journey to radiant, healthy skin starts with a single consultation.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h5 class="font-heading text-base font-semibold text-white mb-5">Quick Links</h5>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="hover:text-gold-light transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-gold-light transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">Services</a></li>
+            <li><a href="gallery.html" class="hover:text-gold-light transition-colors">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-gold-light transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading text-base font-semibold text-white mb-5">Our Services</h5>
+          <ul class="space-y-3 text-sm">
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">HydraFacial</a></li>
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">Laser Treatment</a></li>
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">Chemical Peels</a></li>
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">Botox & Fillers</a></li>
+            <li><a href="services.html" class="hover:text-gold-light transition-colors">PRP Therapy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading text-base font-semibold text-white mb-5">Contact Info</h5>
+          <ul class="space-y-4 text-sm">
+            <li class="flex gap-3"><i class="fa-solid fa-location-dot text-gold mt-0.5 flex-shrink-0"></i><span>123, Skin Street, Near City Hospital, Nashik, MH – 422001</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-phone text-gold mt-0.5 flex-shrink-0"></i><span>+91 98765 43210</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-envelope text-gold mt-0.5 flex-shrink-0"></i><span>hello@lumiereskin.com</span></li>
+            <li class="flex gap-3"><i class="fa-regular fa-clock text-gold mt-0.5 flex-shrink-0"></i><span>Mon–Sat: 9 AM – 7 PM<br/>Sun: 10 AM – 2 PM</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">HydraFacial</a></li><li><a href="services.html">Laser Treatment</a></li><li><a href="services.html">Chemical Peels</a></li><li><a href="services.html">Anti-Aging</a></li><li><a href="services.html">PRP Therapy</a></li></ul></div>
-      <div class="footer-col"><h5>Contact</h5><ul><li>📍 123, Skin Street, Nashik</li><li>📞 +91 98765 43210</li><li>✉️ hello@lumiereskin.com</li><li>⏰ Mon–Sat: 9am – 7pm</li></ul></div>
+      <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/30">
+        <p>&copy; 2025 Lumière Skin Clinic. All Rights Reserved.</p>
+        <p>Designed with care for your skin journey</p>
+      </div>
     </div>
-    <div class="footer-bottom"><p>© 2025 Lumière Skin Clinic. All Rights Reserved.</p></div>
   </footer>
 
-  <script src="script.js"></script>
+  <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn"><i class="fa-brands fa-whatsapp text-white text-2xl"></i></a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('navbar-scrolled', window.scrollY > 20); });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('open'); }));
+    // Fade-in (old)
+    const fadeObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+    // Scroll reveal (new)
+    const revealObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
+  </script>
 </body>
 </html>
