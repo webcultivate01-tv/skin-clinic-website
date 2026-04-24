@@ -52,6 +52,14 @@
     .hamburger.active .hamburger-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .hamburger-bar:nth-child(2) { opacity: 0; }
     .hamburger.active .hamburger-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    /* ---- TOPBAR ---- */
+    .topbar { background: #5c3d2e; color: #e8d5b7; font-size: 0.78rem; padding: 8px 0; }
+    .topbar a { color: #e8d5b7; text-decoration: none; transition: color 0.2s; }
+    .topbar a:hover { color: #fff; }
+    .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .topbar-left { display: flex; align-items: center; gap: 20px; }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    @media(max-width:640px){ .topbar-inner { justify-content: center; } .topbar-right { display: none; } }
     @media (max-width: 768px) { .mobile-menu { display: none; } .mobile-menu.open { display: flex; } }
     .cta-section { background: linear-gradient(135deg, #fdf6f0 0%, #f5ede6 50%, #ede0d6 100%); position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; top: -60px; left: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(184,147,90,0.15), transparent); border-radius: 50%; }
@@ -68,8 +76,22 @@
 </head>
 <body>
 
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <a href="tel:+919876543210"><i class="fa-solid fa-phone mr-1"></i> +91 98765 43210</a>
+        <a href="mailto:hello@lumiereskin.com" class="hidden sm:inline"><i class="fa-solid fa-envelope mr-1"></i> hello@lumiereskin.com</a>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fa-regular fa-clock mr-1"></i> Mon–Sat: 9:00 AM – 7:00 PM</span>
+        <span><i class="fa-solid fa-sun mr-1"></i> Sun: 10:00 AM – 2:00 PM</span>
+      </div>
+    </div>
+  </div>
+
   <!-- NAV -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-amber-100 transition-all duration-300">
+  <nav id="navbar" class="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-700 to-amber-500 flex items-center justify-center">
@@ -100,7 +122,7 @@
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="relative pt-36 pb-24 text-center overflow-hidden" style="background: linear-gradient(135deg, #faf7f2 0%, #f5ede6 60%, #ede0d6 100%);">
+  <section class="relative pt-24 pb-16 text-center overflow-hidden" style="background: linear-gradient(135deg, #faf7f2 0%, #f5ede6 60%, #ede0d6 100%);">
     <div class="max-w-3xl mx-auto px-6 relative z-10 fade-in">
       <span class="section-tag"><i class="fa-solid fa-circle-dot mr-1"></i> What We Offer</span>
       <h1 class="font-heading text-5xl lg:text-6xl font-bold text-charcoal mt-3 mb-5 leading-tight">
