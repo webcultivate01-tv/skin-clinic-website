@@ -27,7 +27,10 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    html { overflow-x: hidden; }
+    /* overflow-x lives on body only (not html) so it propagates to the
+       viewport instead of turning body into its own nested scroll
+       container — a nested scroll container on html+body was the reason
+       position:sticky on the header never actually stuck. */
     body { font-family: 'Inter', sans-serif; background-color: #faf7f2; color: #2c2420; overflow-x: hidden; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
@@ -40,19 +43,12 @@
     .topbar-right { display: flex; align-items: center; gap: 20px; }
     @media(max-width:640px){ .topbar-inner { justify-content: center; } .topbar-right { display: none; } }
 
-    /* NAVBAR */
-    #navbar {
-      position: -webkit-sticky !important; /* Safari */
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 9999 !important;
-    }
-    
     .navbar-scrolled { box-shadow: 0 4px 30px rgba(80,40,20,0.1); }
     .nav-link { position: relative; padding: 6px 0 !important; margin: 0 16px; background: transparent !important; border-radius: 0 !important; }
     .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #b8935a; transition: width 0.3s; border-radius: 2px; }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link:hover { color: #5c3d2e !important; background: transparent !important; }
+    .nav-link.active { color: #8a7a70 !important; }
     .hamburger-bar { display: block; width: 24px; height: 2px; background: #5c3d2e; border-radius: 2px; transition: all 0.3s; }
     .hamburger.active .hamburger-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .hamburger-bar:nth-child(2) { opacity: 0; }
@@ -315,8 +311,11 @@
       }
     }
   
-    /* ===== STICKY HEADER FIX ===== */
-    /* Wrap topbar + navbar in sticky container */
+    /* ===== STICKY HEADER ===== */
+    /* The topbar + navbar are wrapped together in .sticky-header, which is
+       the element that actually sticks to the viewport. #navbar itself
+       stays position:relative so it just rides along inside the sticky
+       wrapper instead of fighting it for its own sticky context. */
     .sticky-header {
       position: -webkit-sticky;
       position: sticky;
@@ -324,12 +323,12 @@
       z-index: 9999;
       width: 100%;
     }
-    
-    /* Override any individual sticky on navbar */
+
     #navbar {
       position: relative !important;
       top: auto !important;
       z-index: auto !important;
+      background: rgba(255, 255, 255, 0.98) !important;
     }
 
     /* ===== MOBILE DRAWER LOGO FIX ===== */
@@ -377,11 +376,6 @@
 
   
     /* ===== ADDITIONAL MOBILE FIXES ===== */
-
-    /* Ensure navbar has solid white background */
-    #navbar {
-      background: rgba(255, 255, 255, 0.98) !important;
-    }
 
     /* Mobile drawer must be above everything */
     .mobile-drawer {
@@ -475,7 +469,7 @@
       </a>
       <ul class="hidden md:flex items-center">
         <li><a href="index.html" class="nav-link text-sm font-medium text-muted transition-colors">Home</a></li>
-        <li><a href="about.html" class="nav-link active text-sm font-medium text-brown">About</a></li>
+        <li><a href="about.html" class="nav-link active text-sm font-medium text-muted transition-colors">About</a></li>
         <li><a href="services.html" class="nav-link text-sm font-medium text-muted">Services</a></li>
         <li><a href="gallery.html" class="nav-link text-sm font-medium text-muted">Gallery</a></li>
         <li><a href="contact.html" class="nav-link text-sm font-medium text-muted">Contact</a></li>
@@ -1082,7 +1076,9 @@
   <script>
     // Navbar scroll
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('navbar-scrolled', window.scrollY > 20); });
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+    });
 
     // Drawer
     const hamburger = document.getElementById('hamburger');

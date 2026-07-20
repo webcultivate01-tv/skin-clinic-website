@@ -7,12 +7,59 @@
   <title>Lumière Skin Clinic – Advanced Dermatology &amp; Skin Care | Nashik</title>
   <meta name="description"
     content="Lumière Skin Clinic in Nashik offers advanced dermatology treatments including HydraFacial, Laser Resurfacing, Anti-Aging, Botox, and Acne Solutions by board-certified dermatologists." />
+  <link rel="canonical" href="https://www.lumiereskin.com/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%235c3d2e'/%3E%3Cpath d='M32 14c8 6 14 12 14 20a14 14 0 0 1-28 0c0-8 6-14 14-20z' fill='%23b8935a'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph / Social Share -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="Lumière Skin Clinic – Advanced Dermatology & Skin Care | Nashik" />
+  <meta property="og:description" content="Advanced dermatology treatments including HydraFacial, Laser Resurfacing, Anti-Aging, Botox, and Acne Solutions by board-certified dermatologists in Nashik." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80" />
+  <meta property="og:url" content="https://www.lumiereskin.com/" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lumière Skin Clinic – Advanced Dermatology & Skin Care | Nashik" />
+  <meta name="twitter:description" content="Advanced dermatology treatments including HydraFacial, Laser Resurfacing, Anti-Aging, Botox, and Acne Solutions by board-certified dermatologists in Nashik." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Structured Data for Local SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Lumière Skin Clinic",
+    "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80",
+    "telephone": "+91-98765-43210",
+    "email": "hello@lumiereskin.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123, Skin Street, Near City Hospital",
+      "addressLocality": "Nashik",
+      "addressRegion": "Maharashtra",
+      "postalCode": "422001",
+      "addressCountry": "IN"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "14:00" }
+    ],
+    "medicalSpecialty": "Dermatology",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/"
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,14 +85,14 @@
     }
   </script>
   <style>
+    /* overflow-x lives on body only (not html) so it propagates to the
+       viewport instead of turning body into its own nested scroll
+       container — that nesting was why position:sticky on the header
+       never actually stuck. */
     body {
       font-family: 'Inter', sans-serif;
       background-color: #faf7f2;
       color: #2c2420;
-      overflow-x: hidden;
-    }
-
-    html {
       overflow-x: hidden;
     }
 
@@ -57,13 +104,6 @@
     }
 
     /* ---- NAVBAR ---- */
-    #navbar {
-      position: -webkit-sticky !important; /* Safari */
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 9999 !important;
-    }
-    
     .navbar-scrolled {
       box-shadow: 0 4px 30px rgba(80, 40, 20, 0.1);
     }
@@ -99,16 +139,13 @@
       background: transparent !important;
     }
 
+    .nav-link.active {
+      color: #8a7a70 !important;
+    }
+
     /* Remove hover:bg from tailwind on nav links */
     .nav-link.hover\:bg-blush:hover {
       background: transparent !important;
-    }
-
-    /* Desktop nav centered */
-    .desktop-nav {
-      display: flex;
-      align-items: center;
-      gap: 0;
     }
 
     /* ---- HERO ---- */
@@ -1043,8 +1080,11 @@
       }
     }
   
-    /* ===== STICKY HEADER FIX ===== */
-    /* Wrap topbar + navbar in sticky container */
+    /* ===== STICKY HEADER ===== */
+    /* The topbar + navbar are wrapped together in .sticky-header, which is
+       the element that actually sticks to the viewport. #navbar itself
+       stays position:relative so it just rides along inside the sticky
+       wrapper instead of fighting it for its own sticky context. */
     .sticky-header {
       position: -webkit-sticky;
       position: sticky;
@@ -1052,12 +1092,12 @@
       z-index: 9999;
       width: 100%;
     }
-    
-    /* Override any individual sticky on navbar */
+
     #navbar {
       position: relative !important;
       top: auto !important;
       z-index: auto !important;
+      background: rgba(255, 255, 255, 0.98) !important;
     }
 
     /* ===== MOBILE DRAWER LOGO FIX ===== */
@@ -1105,11 +1145,6 @@
 
   
     /* ===== ADDITIONAL MOBILE FIXES ===== */
-
-    /* Ensure navbar has solid white background */
-    #navbar {
-      background: rgba(255, 255, 255, 0.98) !important;
-    }
 
     /* Mobile drawer must be above everything */
     .mobile-drawer {
@@ -1173,6 +1208,89 @@
     }
     /* ===== END ADDITIONAL FIXES ===== */
 
+    /* ---- FAQ ACCORDION ---- */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid #f0e6d8;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .faq-item.open {
+      border-color: #e8d5b7;
+      box-shadow: 0 12px 40px rgba(80, 40, 20, 0.1);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 20px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2c2420;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f5ede6;
+      color: #b8935a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: #b8935a;
+      color: #fff;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 24px 22px;
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #8a7a70;
+    }
+
+    @media (max-width: 640px) {
+      .faq-question {
+        padding: 16px 18px;
+        font-size: 0.92rem;
+      }
+
+      .faq-answer p {
+        padding: 0 18px 18px;
+        font-size: 0.88rem;
+      }
+    }
+
   </style>
 </head>
 
@@ -1194,30 +1312,25 @@
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav id="navbar"
-    class="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 transition-all duration-300">
+ <!-- NAV -->
+  <nav id="navbar" class="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
-        <div
-          class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-700 to-amber-500 flex items-center justify-center">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-700 to-amber-500 flex items-center justify-center shadow-md">
           <i class="fa-solid fa-spa text-white text-sm"></i>
         </div>
-        <span class="font-heading text-2xl font-semibold text-brown">Lumière <span class="text-gold font-heading">Skin</span></span>
+        <span style="font-family:'Playfair Display',serif" class="text-2xl font-semibold text-brown">Lumière <span class="text-gold font-heading">Skin</span></span>
       </a>
-      <!-- Desktop nav centered -->
-      <ul class="desktop-nav hidden md:flex items-center">
-        <li><a href="index.html" class="nav-link active text-sm font-medium text-brown transition-colors">Home</a></li>
+      <ul class="hidden md:flex items-center">
+        <li><a href="index.html" class="nav-link active text-sm font-medium text-muted transition-colors">Home</a></li>
         <li><a href="about.html" class="nav-link text-sm font-medium text-muted transition-colors">About</a></li>
-        <li><a href="services.html" class="nav-link text-sm font-medium text-muted transition-colors">Services</a></li>
-        <li><a href="gallery.html" class="nav-link text-sm font-medium text-muted transition-colors">Gallery</a></li>
-        <li><a href="contact.html" class="nav-link text-sm font-medium text-muted transition-colors">Contact</a></li>
-        <li class="ml-6"><a href="contact.html" class="btn-primary text-sm">Book Now</a></li>
+        <li><a href="services.html" class="nav-link text-sm font-medium text-muted">Services</a></li>
+        <li><a href="gallery.html" class="nav-link text-sm font-medium text-muted">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link text-sm font-medium text-muted">Contact</a></li>
+        <li class="ml-6"><a href="contact.html" class="btn-primary text-sm py-3 px-6">Book Now</a></li>
       </ul>
-      <button id="hamburger" class="md:hidden hamburger flex flex-col gap-1.5 p-2 bg-none border-none cursor-pointer">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
+      <button id="hamburger" class="md:hidden hamburger flex flex-col gap-1.5 p-2">
+        <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
       </button>
     </div>
   </nav>
@@ -1242,6 +1355,7 @@
       <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
       <a href="services.html"><i class="fa-solid fa-star"></i> Services</a>
       <a href="gallery.html"><i class="fa-solid fa-images"></i> Gallery</a>
+      <a href="index.html#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
       <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
     </nav>
     <div class="drawer-footer">
@@ -1781,6 +1895,64 @@
     </div>
   </section>
 
+  <!-- FAQ SECTION -->
+  <section class="py-20 bg-cream" id="faq">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <span class="section-tag">Got Questions?</span>
+        <h2 class="font-heading text-4xl font-bold text-charcoal mt-3 mb-4">Frequently Asked <span class="text-gold font-heading">Questions</span></h2>
+        <p class="text-muted max-w-lg mx-auto">Everything you need to know before your first visit. Still unsure? Just give us a call.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Is the initial consultation really free?</span>
+            <i class="fa-solid fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Your first consultation, including a detailed skin analysis by our board-certified dermatologists, is completely free — no obligation to proceed with treatment.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Are the treatments safe for Indian skin types?</span>
+            <i class="fa-solid fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Every protocol we use, from HydraFacial to laser resurfacing, is calibrated specifically for Indian skin tones, minimising the risk of pigmentation or sensitivity.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>How many sessions will I need to see results?</span>
+            <i class="fa-solid fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Most concerns show visible improvement within 3–6 sessions, though this varies by treatment and skin condition. Your dermatologist will share a clear plan at your consultation.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Do the procedures hurt, and is there any downtime?</span>
+            <i class="fa-solid fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Most of our treatments are non-invasive and cause minimal to no discomfort. Downtime is typically none to a couple of days, and our team will always walk you through aftercare.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Do you accept walk-ins, or is an appointment required?</span>
+            <i class="fa-solid fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We recommend booking ahead so our specialists can dedicate proper time to your consultation, but feel free to call us and we'll do our best to accommodate walk-ins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA SECTION -->
   <section class="cta-section py-20 relative" style="overflow:hidden;">
     <div class="max-w-6xl mx-auto px-6 relative z-10">
@@ -2123,6 +2295,27 @@
     // Make functions global
     window.mobileHeroSliderNext = mobileHeroSliderNext;
     window.mobileHeroSliderPrev = mobileHeroSliderPrev;
+    // ---- FAQ ACCORDION ----
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+        if (isOpen) {
+          item.classList.remove('open');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
   </script>
 </body>
 
